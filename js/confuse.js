@@ -1,5 +1,11 @@
 /*
+    Description: 
+      Replace a string of text with Unicode confusables 
+      which look visually similar.
 
+    Usage:
+      var input = "A string of text";
+      var output = confuse(input); 
 */
 
 function confuse(input) {

@@ -1,14 +1,14 @@
 /* 
-   
-   The data here was converted from the Unicode confusables data 
-   located at http://unicode.org/Public/security/
+    Description:
+      The data here was converted from the Unicode confusables data 
+      located at http://unicode.org/Public/security/
  
-   Confusable characters are stored in arrays with their lookalikes.
-   - An index was created for faster lookups.
-   - Data includes only some of the BMP data from TR39.  
-   - Data been manually altered to remove problem characters, that is, 
-     those which don't display well or at all in Google Chrome 30.0.1599.101.
-   - Data has also been altered to include Latin FullWidth characters.
+      - Confusable characters are stored in arrays with their lookalikes.
+      - An index was created for faster lookups.
+      - Data includes only some of the BMP data from TR39.  
+      - Data been manually altered to remove problem characters, that is, 
+        those which don't display well or at all in Google Chrome 30.0.1599.101.
+      - Data has also been altered to include Latin FullWidth characters.
 */
 
 var Confusables = { };
