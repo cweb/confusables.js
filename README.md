@@ -10,9 +10,9 @@ The test page `index.html` is running at [http://lookout.net/test/jsconfusables]
 In a browser:
 
 ```html
-<script src="confusables.js"></script>
-<script src="confuse.js"></script>
-<script src="fromcodepoint.js"></script>
+<script src="data/confusables.js"></script>
+<script src="js/confuse.js"></script>
+<script src="js/fromcodepoint.js"></script>
 ```
 
 Then, call the `confuse()` function and pass in your input:
