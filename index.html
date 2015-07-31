@@ -1,0 +1,47 @@
+<!-- 
+
+  A simple test page for jsConfusables 
+
+-->
+
+<script src="data/confusables.js"></script>
+<script src="js/confuse.js"></script>
+<script src="js/fromcodepoint.js"></script>
+
+<script>
+// Add button click actions here
+document.addEventListener('DOMContentLoaded', function () {
+  if(document.getElementById('submit-confuse')) {
+    document.getElementById('submit-confuse').addEventListener('click', 
+        function() {
+            process("confuse");
+        }
+    );
+  }
+});
+
+// Process the action
+function process(action) {
+    var input = document.getElementById("input");
+    if (action == "confuse") {
+        output.innerHTML = confuse(input.value);
+    }
+}
+
+</script>
+
+<h2 style="width: 500px;">Test page for jsConfusables</h2>
+
+<div>
+<p>This is a test page for jsConfusables, which replaces each character of input with a Unicode confusable that visually 
+looks similar.  When more than one confusable exists for a given character, a random one will be chosen.
+</p>
+</div>
+<h2 class="borderless" style="display: inline">Input text</h2>
+<p><textarea id="input" style="width: 600px;">abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789</textarea></p>
+    <div>
+        <button id="submit-confuse" >Confuse</button> (click button again for a different result)
+        <div style="margin: 0 0 0 10px; display: inline; width: 400px;" >
+        </div> 
+    </div>
+<p><textarea id="output" style="width: 600px;"></textarea></p>
