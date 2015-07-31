@@ -1,13 +1,17 @@
+<!DOCTYPE html>
 <!-- 
 
   A simple test page for jsConfusables 
 
 -->
-
+<html>
+<head>
+<title>Unicode Confusables in JavaScript</title>
 <script src="data/confusables.js"></script>
 <script src="js/confuse.js"></script>
 <script src="js/fromcodepoint.js"></script>
-
+</head>
+<body>
 <script>
 // Add button click actions here
 document.addEventListener('DOMContentLoaded', function () {
@@ -45,3 +49,5 @@ looks similar.  When more than one confusable exists for a given character, a ra
         </div> 
     </div>
 <p><textarea id="output" style="width: 600px;"></textarea></p>
+</body>
+</html>

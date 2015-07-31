@@ -1,16 +1,3 @@
-// String.fromCharCode() alone cannot get a character at such a high code point.
-//
-// The following, on the other hand, can return a 4-byte character as well as the 
-//   usual 2-byte ones (i.e., it can return a single character which actually has 
-//   a string length of 2 instead of 1).
-//
-// alert(String.fromCodePoint(0x2F804)); // or 194564 in decimal
-
-/*!
-* From: (c) 2012 Steven Levithan <http://slevithan.com/>
-* MIT License
-*/
-
 /*! https://mths.be/fromcodepoint v0.2.1 by @mathias */
 if (!String.fromCodePoint) {
     (function() {

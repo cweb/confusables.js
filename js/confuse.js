@@ -1,4 +1,7 @@
-// Copyright (c) 2014 txtn.us
+/*
+
+*/
+
 function confuse(input) {
     var output = "";
     var pointer;
@@ -9,14 +12,11 @@ function confuse(input) {
         for (var i = 0; i < input.length; i++) {
             // Get the current character
             var c = input.charAt(i);
-            // Flip a coin to decide whether or not this 
-            // character gets replaced with a confusable
-            var chance = parseInt(Math.random() * 2, 10);
             // Get the value of the character
             var v = c.charCodeAt();
 
             // Only confuse things if the char is in the BMP
-            if (chance && v <= 0xFFFF) {
+            if (v <= 0xFFFF) {
                 var newChar = "";
                 var sourceIndex;   // the source code point
                 var replacement; // the replacement code point(s)
