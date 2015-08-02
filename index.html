@@ -18,19 +18,11 @@ document.addEventListener('DOMContentLoaded', function () {
   if(document.getElementById('submit-confuse')) {
     document.getElementById('submit-confuse').addEventListener('click', 
         function() {
-            process("confuse");
+            output.innerHTML = confuse(input.value);
         }
     );
   }
 });
-
-// Process the action
-function process(action) {
-    var input = document.getElementById("input");
-    if (action == "confuse") {
-        output.innerHTML = confuse(input.value);
-    }
-}
 
 </script>
 
