@@ -10,8 +10,7 @@ The test page `index.html` is running at [http://lookout.net/test/confusablesjs]
 In a browser:
 
 ```html
-<script src="data/confusables.js"></script>
-<script src="js/confuse.js"></script>
+<script src="js/confusables.js"></script>
 <script src="js/fromcodepoint.js"></script>
 ```
 
