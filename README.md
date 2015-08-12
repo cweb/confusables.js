@@ -1,5 +1,5 @@
-# confusablesjs
-A javascript library for Unicode Confusables
+# confusables.js
+A javascript utility for Unicode Confusables
 
 ## Dependency
 If you want to call the provided `confuse()` function with your input, it requires [String.fromCodePoint](https://github.com/mathiasbynens/String.fromCodePoint) by [Mathias Bynens](https://mathiasbynens.be/).
@@ -25,4 +25,4 @@ var output = confuse(input);
 
 ## License
 
-confusablesjs is available under the MIT license.
+confusables.js is available under the MIT license.
