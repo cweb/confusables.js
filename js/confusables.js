@@ -9,7 +9,7 @@
 
       Currently implemented public methods are:
 
-      getConfusableString(input)
+      confusables.getConfusableString(input)
       - Call this to get a string of confusable characters which are 
       visually similar to the input string.
 

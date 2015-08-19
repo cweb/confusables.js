@@ -27,10 +27,10 @@ In a browser:
 <script src="js/fromcodepoint.js"></script>
 ```
 
-Then, call the `getConfusableString()` function and pass in your input:
+Then, call the `confusables.getConfusableString()` function and pass in your input:
 
 ```js
-var output = getConfusableString(input);
+var output = confusables.getConfusableString(input);
 ```
 
 ## Author
