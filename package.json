@@ -1,14 +1,14 @@
 {
-  "name": "confusablesjs",
+  "name": "confusables.js",
   "version": "1.0.0",
-  "description": "A javascript library for accessing the Unicode confusables data.",
+  "description": "A javascript module for accessing the Unicode confusables data.",
   "main": "confusables.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/cweb/confusablesjs.git"
+    "url": "git+https://github.com/cweb/confusables.js.git"
   },
   "keywords": [
     "Unicode",
@@ -17,9 +17,9 @@
   "author": "Chris Weber",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/cweb/confusablesjs/issues"
+    "url": "https://github.com/cweb/confusables.js/issues"
   },
-  "homepage": "https://github.com/cweb/confusablesjs#readme",
+  "homepage": "https://github.com/cweb/confusables.js#readme",
   "devDependencies": {
     "gulp": "^3.9.0",
     "gulp-concat": "^2.6.0",

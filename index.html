@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', function () {
   if(document.getElementById('submit-confuse')) {
     document.getElementById('submit-confuse').addEventListener('click', 
         function() {
-            output.innerHTML = confuse(input.value);
+            output.innerHTML = confusables.getConfusableString(input.value);
         }
     );
   }
