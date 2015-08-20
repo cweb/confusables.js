@@ -8661,7 +8661,10 @@ var confusables = (function () {
     function publicGetConfusableString(input) {
         var output = "";
         var pointer;
-        if (typeof input === "string") {
+        if (typeof input !== "string") {
+            throw new TypeError("input was not a string");
+        }
+        else {
             // Input is a valid string
 
             // Iterate over string
@@ -8715,11 +8718,12 @@ var confusables = (function () {
                         output = output + c;
                     }
                 }
+                // If the character was not in the BMP, then add it to 
+                // the string unchanged.
                 else {
                     output = output + c;
                 }
             }
-            
         }
         return output;
     }

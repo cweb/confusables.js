@@ -23,4 +23,28 @@ describe("Test suite for confusables.js getConfusableString() : ", function() {
     }
     expect(success).toEqual(true);
   });
+
+  it("throws when input is not a string", function() {
+    // Thanks to https://ajsblackbelt.wordpress.com/2014/05/18/jasmine-tests-expect-tothrow/comment-page-1/
+    // for letting me know to use expect with an anonymous function for this case
+    expect(function() {
+      confusables.getConfusableString(1);
+    }).toThrowError();
+    expect(function() {
+      confusables.getConfusableString(new Object);
+    }).toThrowError();
+    expect(function() {
+      confusables.getConfusableString("A");
+    }).not.toThrowError();
+  });
+
+  it("returns a character > 0xFFFF with itself", function() {
+    //var c = 0x10300;  // U+10300 OLD ITALIC LETTER A
+    // Get a randon code point outside of the BMP
+    var c = Math.floor(Math.random() * 0x10FFFF) + 0xFFFF
+    var input = String.fromCodePoint(c); 
+    var output = confusables.getConfusableString(input);
+    expect(input).toEqual(output);
+  });
+
 });
