@@ -1,4 +1,4 @@
-# confusables.js
+# confusables.js [![Build Status](https://travis-ci.org/cweb/confusables.js.svg?branch=master)](https://travis-ci.org/cweb/confusables.js)
 A javascript module for accessing the Unicode confusables
 
 ## Dependency
