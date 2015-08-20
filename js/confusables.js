@@ -8753,6 +8753,6 @@ var confusables = (function () {
     return {
         // Return public methods
         getConfusableString: publicGetConfusableString
-    }
+    };
 
 })();
