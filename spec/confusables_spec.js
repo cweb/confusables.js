@@ -48,3 +48,15 @@ describe("Test suite for confusables.js getConfusableString() : ", function() {
   });
 
 });
+
+describe("Test suite for confusables.js getConfusableCharacters() : ", function() {
+  it("returns an array", function() {
+    var input = "A";
+    var output = confusables.utility.getConfusableCharacters(input);
+    var success = false;
+    if (typeof output === "object") {
+      succes = true;
+    }
+    expect(succes).toBe(true);
+  });
+});

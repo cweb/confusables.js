@@ -27,15 +27,15 @@
 var confusables = confusables || {};
 
 confusables.utility = (function () {
-    /*
-        Description: 
-          Return a string of text with a random selection of Unicode confusables 
-          which look visually similar to the input.
 
-        Usage:
-          var input = "A string of text";
-          var output = publicGetConfusableString(input); 
-    */
+    // Description: 
+    //   Return a string of text with a random selection of Unicode confusables 
+    //   which look visually similar to the input.
+
+    // Usage:
+    //   var input = "A string of text";
+    //   var output = confusables.utility.getConfusableString(input); 
+
 
     function getConfusableString(input) {
         var output = "";
@@ -107,6 +107,48 @@ confusables.utility = (function () {
         return output;
     }
 
+
+    // Description: 
+    //   Accepts only a single character <= U+FFFF and returns an array
+    //   of its confusable characters.  
+
+    // Usage:
+    //   var input = "A";
+    //   var output = confusables.utility.getConfusableCharacters(char); 
+    function getConfusableCharacters(input) {
+        if (typeof input !== "string") {
+            throw new TypeError("input was not a string");
+        }
+        if (input.length !== 1) {
+            throw new Error("only a single character is allowed as input")
+        }
+        if (input.charCodeAt() > 0xFFFF) {
+            throw new Error("only characters in the BMP are allowed")
+        }
+        var pointer = confusables.data.index[input.charCodeAt()];
+        // the set of confusables for the input
+        var set = confusables.data.characters[pointer];
+        // now iterate over the set and turn the values into characters
+        for (var i = 0; i < set.length; i++) {
+            var newChar = "";
+            // Check if this is a sequence of confusables, more than one
+            // character making up the confusable
+            if (Object.prototype.toString.call(set[i]) === '[object Array]' ) {
+                // The replacement confusables are an array of code points
+                // so keep the array, returning each character.
+                for (var j = 0; j < set[i].length; j++) {
+                    //newChar += String.fromCodePoint(set[i][j]);
+                    set[i][j] = String.fromCodePoint(set[i][j]);
+                }
+            }
+            else if (typeof set[i] === 'number') {
+                // Else the replacement is a single code point.
+                set[i] = String.fromCodePoint(set[i]);
+            }
+        }
+        return set;
+    }
+
     // Insert invisible characters.
     function publicGetInvisibles(input) {
        var invisibles = [0x180E, 0x2028, 0x2029, 0x1680 ];
@@ -135,7 +177,8 @@ confusables.utility = (function () {
 
     return {
         // Return public methods
-        getConfusableString : getConfusableString
+        getConfusableString : getConfusableString,
+        getConfusableCharacters : getConfusableCharacters
     };
 
 })();

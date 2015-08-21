@@ -31,7 +31,7 @@ In a browser:
 Then, call the `confusables.utility.getConfusableString()` function and pass in your input:
 
 ```js
-var output = confusables.getConfusableString(input);
+var output = confusables.utility.getConfusableString(input);
 ```
 
 ## Author
