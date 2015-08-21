@@ -23,11 +23,12 @@ The test page `index.html` is running at [http://lookout.net/test/confusablesjs]
 In a browser:
 
 ```html
+<script src="js/confusables.data.js"></script>
 <script src="js/confusables.js"></script>
 <script src="js/fromcodepoint.js"></script>
 ```
 
-Then, call the `confusables.getConfusableString()` function and pass in your input:
+Then, call the `confusables.utility.getConfusableString()` function and pass in your input:
 
 ```js
 var output = confusables.getConfusableString(input);
