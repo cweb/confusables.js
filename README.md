@@ -32,7 +32,7 @@ In a browser:
 Public methods are available to return confusable data.
 
 ### `confusables.utility.getConfusableString()`
-The `confusables.utility.getConfusableString()` method accepts a string of one or more characters as input and returns a string of confusable characters.  Since each character of input can have several confusables, a random one is selected:
+The `confusables.utility.getConfusableString()` method accepts a string of one or more characters as input and returns a string of confusable characters.  Since each character of input can have several confusables, a random one is selected from the data set.  This provides a quick and convenient way to select confusables without enumerating the entire set.
 
 ```js
 var input = "abcDEF123";
@@ -41,11 +41,11 @@ var output = confusables.utility.getConfusableString(input);
 ```
 
 ### `confusables.utility.getConfusableCharacters()`
-The `confusables.utility.getConfusableCharacters()` method accepts a single character or code point value as input and returns all of it's confusable characters in an array:
+The `confusables.utility.getConfusableCharacters()` method accepts a single character or code point value (decimal or hex) as input and returns all of it's confusable characters in an array, which could be multidimensional when several characters combine to create a single confusable:
 
 ```js
-var input = 0x0041;  // or "A" or 65
-var output = confusables.utility.getConfusableCharacters(input); 
+var codePoint = 0x0041;  // or "A" or 65
+var output = confusables.utility.getConfusableCharacters(codePoint); 
 // output is ['A', 'Ａ', 'Α', 'А', 'Ꭺ', 'ᗅ']
 // and could contain arrays of characters as values, e.g.:
 // [["C", "'"], "Ƈ" ];
