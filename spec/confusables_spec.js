@@ -55,8 +55,33 @@ describe("Test suite for confusables.js getConfusableCharacters() : ", function(
     var output = confusables.utility.getConfusableCharacters(input);
     var success = false;
     if (typeof output === "object") {
-      succes = true;
+      success = true;
     }
-    expect(succes).toBe(true);
+    expect(success).toBe(true);
   });
+
+  // It looks like jasmine and/or phantomjs don't do well with Unicode, 
+  // and I don't know how to set the text encoding, 
+  // so I'm passing in the number value and converting it to a character.
+  it("returns a multidimensional array", function() {
+      // U+29F6 SOLIDUS WITH OVERBAR
+      var input = 0x29F6;  
+      // U+29F6 returns an array with length 2, the first 
+      // element being an another array of length 2
+      // characters[266] = [[0x002F, 0x0304],0x29F6 ];
+      var output = confusables.utility.getConfusableCharacters(String.fromCharCode(input));
+      var success = false;
+      if (typeof output === "object" && output.length === 2 && output[0].length === 2) {
+          success = true;
+      }
+      expect(success).toBe(true);
+  });
+
+  it("returns a set of expected confusables", function() {
+      var input = "A";  
+      // output should be ['A', 'Ａ', 'Α', 'А', 'Ꭺ', 'ᗅ']
+      var output = confusables.utility.getConfusableCharacters(input);
+      expect(output.length === ['A', 'Ａ', 'Α', 'А', 'Ꭺ', 'ᗅ'].length).toBe(true);
+  });
+
 });

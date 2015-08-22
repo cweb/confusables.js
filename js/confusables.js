@@ -28,6 +28,9 @@ var confusables = confusables || {};
 
 confusables.utility = (function () {
 
+
+    // PUBLIC FUNCTIONS
+
     // Description: 
     //   Return a string of text with a random selection of Unicode confusables 
     //   which look visually similar to the input.
@@ -80,16 +83,26 @@ confusables.utility = (function () {
                         }
                         replacement = cons[(Math.round(Math.random() * (cons.length - 1)))];
                         // check if an array of confusables was returned
-                        if (Object.prototype.toString.call(replacement) === '[object Array]' ) {
+                        if (replacement instanceof Array) {
                             // The replacement confusables are more than one code points
                             // so build the string.
                             for (var j = 0; j < replacement.length; j++) {
-                                newChar += String.fromCodePoint(replacement[j]);
+                                try {
+                                    newChar += String.fromCodePoint(replacement[j]);
+                                }
+                                catch(e) {
+                                    console.error("getConfusableString", e.message);
+                                }
                             }
                         }
                         else if (typeof replacement === 'number') {
                             // Else the replacement is a single code point.
-                            newChar = String.fromCodePoint(replacement);
+                            try {
+                                newChar = String.fromCodePoint(replacement);
+                            }
+                            catch(e) {
+                                console.error("getConfusableString", e.message);
+                            }
                         }
                         output += newChar;
                     }
@@ -110,11 +123,12 @@ confusables.utility = (function () {
 
     // Description: 
     //   Accepts only a single character <= U+FFFF and returns an array
-    //   of its confusable characters.  
+    //   of its confusable characters as strings.  
 
     // Usage:
     //   var input = "A";
     //   var output = confusables.utility.getConfusableCharacters(char); 
+
     function getConfusableCharacters(input) {
         if (typeof input !== "string") {
             throw new TypeError("input was not a string");
@@ -125,32 +139,42 @@ confusables.utility = (function () {
         if (input.charCodeAt() > 0xFFFF) {
             throw new Error("only characters in the BMP are allowed")
         }
+        var set = [];
         var pointer = confusables.data.index[input.charCodeAt()];
-        // the set of confusables for the input
-        var set = confusables.data.characters[pointer];
+        set = _clone(confusables.data.characters[pointer]);
+
         // now iterate over the set and turn the values into characters
         for (var i = 0; i < set.length; i++) {
-            var newChar = "";
             // Check if this is a sequence of confusables, more than one
             // character making up the confusable
-            if (Object.prototype.toString.call(set[i]) === '[object Array]' ) {
+            if (set[i] instanceof Array) {
                 // The replacement confusables are an array of code points
                 // so keep the array, returning each character.
                 for (var j = 0; j < set[i].length; j++) {
                     //newChar += String.fromCodePoint(set[i][j]);
-                    set[i][j] = String.fromCodePoint(set[i][j]);
+                    try {
+                        set[i][j] = String.fromCodePoint(set[i][j]);
+                    }
+                    catch(e) {
+                        console.error("getConfusableCharacters", e.message);
+                    }
                 }
             }
             else if (typeof set[i] === 'number') {
                 // Else the replacement is a single code point.
-                set[i] = String.fromCodePoint(set[i]);
+                try {
+                    set[i] = String.fromCodePoint(set[i]);
+                }
+                catch(e) {
+                    console.error("getConfusableCharacters", e.message);
+                }
             }
         }
         return set;
     }
 
     // Insert invisible characters.
-    function publicGetInvisibles(input) {
+    function getInvisibles(input) {
        var invisibles = [0x180E, 0x2028, 0x2029, 0x1680 ];
 
         if (typeof input === "string") {
@@ -159,7 +183,7 @@ confusables.utility = (function () {
     }
 
     // Insert whitespace characters.
-    function publicGetWhitespace(input) {
+    function getWhitespace(input) {
         var whitespace = [0x0020, 0x2000, 0x2001, 0x2002, 0x2003, 0x2004, 0x2005, 0x2006, 0x2008, 0x2009, 0x200A, 0x00A0, 0x2007, 0x202F ];
         if (typeof input === "string") {
             // Input is a valid string
@@ -168,15 +192,34 @@ confusables.utility = (function () {
 
     // Insert artifacts like modifiers and
     // accents.
-    function publicGetArtifacts(input) {
+    function getArtifacts(input) {
         if (typeof input === "string") {
             // Input is a valid string
         }
 
     }
 
+    // PRIVATE FUNCTIONS
+
+    function _clone(arr) {
+        var copy;
+
+        // Handle null, undefined, and number types
+        if (null == arr || "object" != typeof arr) return arr;
+        // Handle Array
+        if (arr instanceof Array) {
+            copy = [];
+            for (var i = 0, len = arr.length; i < len; i++) {
+                copy[i] = _clone(arr[i]);
+            }
+            return copy;
+        }
+        throw new Error("Unable to copy array!");
+    }
+
+
     return {
-        // Return public methods
+        // Return public functions
         getConfusableString : getConfusableString,
         getConfusableCharacters : getConfusableCharacters
     };
