@@ -1,6 +1,6 @@
 {
   "name": "confusables.js",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "A javascript module for accessing the Unicode confusables data.",
   "main": "confusables.js",
   "scripts": {

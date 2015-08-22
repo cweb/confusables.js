@@ -29,7 +29,7 @@ var confusables = confusables || {};
 confusables.utility = (function () {
 
 
-    // PUBLIC FUNCTIONS
+    // PUBLIC METHODS
 
     // Description: 
     //   Return a string of text with a random selection of Unicode confusables 
@@ -199,7 +199,7 @@ confusables.utility = (function () {
 
     }
 
-    // PRIVATE FUNCTIONS
+    // PRIVATE METHODS
 
     function _clone(arr) {
         var copy;

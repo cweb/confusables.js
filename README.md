@@ -28,10 +28,20 @@ In a browser:
 <script src="js/fromcodepoint.js"></script>
 ```
 
-Then, call the `confusables.utility.getConfusableString()` function and pass in your input:
+Then, call one of the public methods.  The `confusables.utility.getConfusableString()` method accepts a string of one or more characters as input and returns a string of confusable characters.  Since each character of input can have several confusables, a random one is selected:
 
 ```js
-var output = confusables.utility.getConfusableString(input);
+var input = "abcDEF123";
+var output = confusables.utility.getConfusableString(input); 
+// output is "αƄсᎠᎬϜוƧЗ""
+```
+
+The `confusables.utility.getConfusableCharacters()` method accepts a single character as input and returns all of it's confusable characters in an array:
+
+```js
+var input = "A";
+var output = confusables.utility.getConfusableCharacters(input); 
+// output is ['A', 'Ａ', 'Α', 'А', 'Ꭺ', 'ᗅ']
 ```
 
 ## Author
