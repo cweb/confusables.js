@@ -41,12 +41,14 @@ var output = confusables.utility.getConfusableString(input);
 ```
 
 ### `confusables.utility.getConfusableCharacters()`
-The `confusables.utility.getConfusableCharacters()` method accepts a single character as input and returns all of it's confusable characters in an array:
+The `confusables.utility.getConfusableCharacters()` method accepts a single character or code point value as input and returns all of it's confusable characters in an array:
 
 ```js
-var input = "A";
+var input = 0x0041;  // or "A" or 65
 var output = confusables.utility.getConfusableCharacters(input); 
 // output is ['A', 'Ａ', 'Α', 'А', 'Ꭺ', 'ᗅ']
+// and could contain arrays of characters as values, e.g.:
+// [["C", "'"], "Ƈ" ];
 ```
 
 ## Author

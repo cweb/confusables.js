@@ -1,27 +1,45 @@
 /* 
     Description:
-      This module provides the Unicode confusables data in JavaScript, 
-      along with methods to access that data.  The Unicode confusables 
-      are characters which are visually similar and easily confused 
-      with other characters.  More information: 
+    This module provides the Unicode confusables data in JavaScript, 
+    along with methods to access that data.  The Unicode confusables 
+    are characters which are visually similar to each other.  The 
+    following set of characters are each different, but all visually 
+    similar :  'A', 'Ａ', 'Α', 'А', 'Ꭺ', 'ᗅ'
 
-      http://www.unicode.org/reports/tr36/#visual_spoofing 
+    The data here was converted from the Unicode 6.0 confusables data 
+    located at http://unicode.org/Public/security/
 
-      Currently implemented public methods are:
+    To replace characters or strings of characters with their confusables, 
+    call getConfusableString() or getConfusableCharacters() from 
+    confusables.js.
 
-      confusables.getConfusableString(input)
-      - Call this to get a string of confusable characters which are 
-      visually similar to the input string.
+    If you'd rather work with the data directly, you can look up a character 
+    in the index by its numerical code point.  So, to get all confusables 
+    for U+0041 LATIN CAPITAL LETTER A, you would:
 
-      The data here was converted from the Unicode confusables data 
-      located at http://unicode.org/Public/security/
- 
-      - Confusable characters are stored in arrays with their lookalikes.
-      - An index was created for faster lookups.
-      - Data includes only some of the BMP data from TR39.  
-      - Data been manually altered to remove problem characters, that is, 
-        those which don't display well or at all in Google Chrome 30.0.1599.101.
-      - Data has also been altered to include Latin FullWidth characters.
+    var cp = 0x0041;
+    var index = confusables.data.index[cp];
+    var characters = confusables.data.characters[index];
+
+    'characters' will be an array of code points :
+
+    [0x0041, 0xFF21, 0x0391, 0x0410, 0x13AA, 0x15C5 ]
+
+    'characters' could also be a multidimensional array when more 
+    than one code point are combined to form a single 
+    confusable character, e.g.
+     
+    [[0x0043, 0x0027],0x0187 ];
+
+    More information: 
+
+    - http://www.unicode.org/reports/tr36/#visual_spoofing 
+    - Confusable characters are stored in arrays with their lookalikes.
+    - An index was created for faster lookups.
+    - Data includes only some of the BMP data from TR39.  
+    - Data been manually altered to remove problem characters, that is, 
+      those which don't display well or at all in Google Chrome 30.0.1599.101.
+    - Data has also been altered to include Latin FullWidth characters.
 */
 
 var confusables = confusables || {};

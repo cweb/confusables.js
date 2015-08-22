@@ -1,27 +1,30 @@
 /* 
     Description:
-      This module provides the Unicode confusables data in JavaScript, 
-      along with methods to access that data.  The Unicode confusables 
-      are characters which are visually similar and easily confused 
-      with other characters.  More information: 
+    This module provides the Unicode confusables data in JavaScript, 
+    along with methods to access that data.  The Unicode confusables 
+    are characters which are visually similar to each other.  The 
+    following set of characters are each different, but all visually 
+    similar :  'A', 'Ａ', 'Α', 'А', 'Ꭺ', 'ᗅ'
 
-      http://www.unicode.org/reports/tr36/#visual_spoofing 
+    The data here was converted from the Unicode 6.0 confusables data 
+    located at http://unicode.org/Public/security/
 
-      Currently implemented public methods are:
+    To get an array of confusable characters for a single given character, 
+    call getConfusableCharacters() from confusables.js.  
 
-      confusables.getConfusableString(input)
-      - Call this to get a string of confusable characters which are 
-      visually similar to the input string.
+    var output = confusables.utility.getConfusableCharacters("A"); 
+          |
+          -- output is ['A', 'Ａ', 'Α', 'А', 'Ꭺ', 'ᗅ']
 
-      The data here was converted from the Unicode confusables data 
-      located at http://unicode.org/Public/security/
- 
-      - Confusable characters are stored in arrays with their lookalikes.
-      - An index was created for faster lookups.
-      - Data includes only some of the BMP data from TR39.  
-      - Data been manually altered to remove problem characters, that is, 
-        those which don't display well or at all in Google Chrome 30.0.1599.101.
-      - Data has also been altered to include Latin FullWidth characters.
+    To get a string that's visually confusable with a given string of 
+    characters, call getConfusableString().
+
+    var output = confusables.utility.getConfusableString("Unicode is fun"); 
+          |
+          -- output is "Ｕᴨıᴄｏｄｅ ɪƽ ſｕᴨ"
+
+    To work with the data directly, look at confusables.data.js.
+
 */
 
 var confusables = confusables || {};
@@ -128,8 +131,16 @@ confusables.utility = (function () {
     // Usage:
     //   var input = "A";
     //   var output = confusables.utility.getConfusableCharacters(char); 
+    //   output is ['A', 'Ａ', 'Α', 'А', 'Ꭺ', 'ᗅ']
+    //   output could contain arrays of characters, e.g.
+    //   [["C", "'"], "Ƈ" ];
 
     function getConfusableCharacters(input) {
+        // If the input was a number, convert it to a string
+        if (typeof input === "number") {
+            input = String.fromCodePoint(input);
+        }
+        // Catch other types, null, object
         if (typeof input !== "string") {
             throw new TypeError("input was not a string");
         }
@@ -141,6 +152,9 @@ confusables.utility = (function () {
         }
         var set = [];
         var pointer = confusables.data.index[input.charCodeAt()];
+        if (typeof pointer === "undefined") {
+            throw new Error("the input doesn't have any confusables");
+        }
         set = _clone(confusables.data.characters[pointer]);
 
         // now iterate over the set and turn the values into characters

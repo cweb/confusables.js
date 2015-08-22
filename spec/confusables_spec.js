@@ -60,8 +60,7 @@ describe("Test suite for confusables.js getConfusableCharacters() : ", function(
     expect(success).toBe(true);
   });
 
-  // It looks like jasmine and/or phantomjs don't do well with Unicode, 
-  // and I don't know how to set the text encoding, 
+  // I don't know how to set the text encoding in jasmine and/or phantomjs without a page to load,
   // so I'm passing in the number value and converting it to a character.
   it("returns a multidimensional array", function() {
       // U+29F6 SOLIDUS WITH OVERBAR
