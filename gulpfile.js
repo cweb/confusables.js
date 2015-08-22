@@ -14,6 +14,7 @@ gulp.task('jasmine', function() {
   return gulp.src('spec/confusables_spec.js')
           .pipe(jasmine({
             integration: true,
+            abortOnTestFailure: true,
             vendor: "js/*.js"
           }));
 });

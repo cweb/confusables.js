@@ -80,7 +80,7 @@ describe("Test suite for confusables.js getConfusableCharacters() : ", function(
       var input = "A";  
       // output should be ['A', 'Ａ', 'Α', 'А', 'Ꭺ', 'ᗅ']
       var output = confusables.utility.getConfusableCharacters(input);
-      expect(output.length === ['A', 'Ａ', 'Α', 'А', 'Ꭺ', 'ᗅ'].length).toBe(true);
+      expect(output.toEqual(['A', 'Ａ', 'Α', 'А', 'Ꭺ', 'ᗅ']));
   });
 
 });
