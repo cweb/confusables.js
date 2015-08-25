@@ -15,10 +15,32 @@
 <script>
 // Add button click actions here
 document.addEventListener('DOMContentLoaded', function () {
-  if(document.getElementById('submit-confuse')) {
-    document.getElementById('submit-confuse').addEventListener('click', 
+  if(document.getElementById('submit-getConfusableString')) {
+    document.getElementById('submit-getConfusableString').addEventListener('click', 
         function() {
-            output.innerHTML = confusables.utility.getConfusableString(input.value);
+            try {
+              output1.innerHTML = confusables.utility.getConfusableString(inputString.value);
+            }
+            catch(e) {
+              output2.innerHTML = "[ERROR] : " + e.message;
+            }
+        }
+    );
+  }
+});
+
+document.addEventListener('DOMContentLoaded', function () {
+  if(document.getElementById('submit-getConfusableCharacters')) {
+    document.getElementById('submit-getConfusableCharacters').addEventListener('click', 
+        function() {
+            var input = parseInt(inputChar.value);
+            if (isNaN(input)) { input = inputChar.value }
+            try {
+                output2.innerHTML = confusables.utility.getConfusableCharacters(input);
+            }
+            catch(e) {
+              output2.innerHTML = "[ERROR] : " + e.message;
+            }
         }
     );
   }
@@ -33,13 +55,23 @@ document.addEventListener('DOMContentLoaded', function () {
 looks similar.  When more than one confusable exists for a given character, a random one will be chosen.
 </p>
 </div>
-<h2 class="borderless" style="display: inline">Input text</h2>
-<p><textarea id="input" style="width: 600px;">abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789</textarea></p>
+<h2 class="borderless" style="display: inline">Input a string to pass to getConfusableString()</h2>
+<p><textarea id="inputString" style="width: 600px;">abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789</textarea></p>
     <div>
-        <button id="submit-confuse" >Confuse</button> (click button again for a different result)
+        <button id="submit-getConfusableString" >getConfusableString</button> (click button again for a different result)
         <div style="margin: 0 0 0 10px; display: inline; width: 400px;" >
         </div> 
     </div>
-<p><textarea id="output" style="width: 600px;"></textarea></p>
+<p><textarea id="output1" style="width: 600px;"></textarea></p>
+
+<h2 class="borderless" style="display: inline">Input a single character or code point (decimal or 0xNNNN) to pass to getConfusableCharacters()</h2>
+<p><textarea id="inputChar" style="width: 600px;">A</textarea></p>
+    <div>
+        <button id="submit-getConfusableCharacters" >getConfusableCharacters</button>
+        <div style="margin: 0 0 0 10px; display: inline; width: 400px;" >
+        </div> 
+    </div>
+<p><textarea id="output2" style="width: 600px;"></textarea></p>
+
 </body>
 </html>

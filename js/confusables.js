@@ -145,10 +145,10 @@ confusables.utility = (function () {
             throw new TypeError("input was not a string");
         }
         if (input.length !== 1) {
-            throw new Error("only a single character is allowed as input")
+            throw new Error("only a single character is allowed as input");
         }
         if (input.charCodeAt() > 0xFFFF) {
-            throw new Error("only characters in the BMP are allowed")
+            throw new Error("only characters in the BMP are allowed");
         }
         var set = [];
         var pointer = confusables.data.index[input.charCodeAt()];
@@ -219,7 +219,7 @@ confusables.utility = (function () {
         var copy;
 
         // Handle null, undefined, and number types
-        if (null == arr || "object" != typeof arr) return arr;
+        if (null === arr || "object" != typeof arr) return arr;
         // Handle Array
         if (arr instanceof Array) {
             copy = [];

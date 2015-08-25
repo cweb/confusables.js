@@ -15,7 +15,7 @@ gulp.task('jasmine', function() {
           .pipe(jasmine({
             integration: true,
             abortOnFail: true,
-            vendor: "js/*.js"
+            vendor: 'js/*.js'
           }));
 });
 
