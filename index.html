@@ -55,7 +55,8 @@ document.addEventListener('DOMContentLoaded', function () {
 looks similar.  When more than one confusable exists for a given character, a random one will be chosen.
 </p>
 </div>
-<h2 class="borderless" style="display: inline">Input a string to pass to getConfusableString()</h2>
+<h2 class="borderless" style="display: inline">getConfusableString()</h2>
+<p>Input a string to pass to getConfusableString(), which will return a string.
 <p><textarea id="inputString" style="width: 600px;">abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789</textarea></p>
     <div>
         <button id="submit-getConfusableString" >getConfusableString</button> (click button again for a different result)
@@ -64,7 +65,8 @@ looks similar.  When more than one confusable exists for a given character, a ra
     </div>
 <p><textarea id="output1" style="width: 600px;"></textarea></p>
 
-<h2 class="borderless" style="display: inline">Input a single character or code point (decimal or 0xNNNN) to pass to getConfusableCharacters()</h2>
+<h2 class="borderless" style="display: inline">getConfusableCharacters()</h2>
+<p>Input a single character or code point (decimal or 0xNNNN) to pass to getConfusableCharacters(), which will return an array.
 <p><textarea id="inputChar" style="width: 600px;">A</textarea></p>
     <div>
         <button id="submit-getConfusableCharacters" >getConfusableCharacters</button>
