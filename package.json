@@ -1,8 +1,8 @@
 {
   "name": "confusables.js",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "description": "A javascript module for accessing the Unicode confusables data.",
-  "main": "confusables.js",
+  "main": "js/confusables.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -10,7 +10,11 @@
     "type": "git",
     "url": "git+https://github.com/cweb/confusables.js.git"
   },
-  "keywords": [
+  "files" : [
+    "js/confusables.js",
+    "js/confusables.data.js"
+  ],   
+  "keywords" : [
     "Unicode",
     "confusables"
   ],
@@ -27,5 +31,8 @@
     "gulp-jshint": "^1.11.2",
     "gulp-sass": "^2.0.4",
     "gulp-util": "^3.0.6"
+  },
+  "dependencies": {
+    "string.fromcodepoint": "^0.2.1"
   }
 }

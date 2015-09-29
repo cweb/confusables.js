@@ -7,19 +7,20 @@
 <html>
 <head>
 <title>Unicode Confusables in JavaScript</title>
-<script src="js/confusables.data.js"></script>
 <script src="js/confusables.js"></script>
 <script src="js/fromcodepoint.js"></script>
 </head>
 <body>
 <script>
+var confusables = confusables;
+
 // Add button click actions here
 document.addEventListener('DOMContentLoaded', function () {
   if(document.getElementById('submit-getConfusableString')) {
     document.getElementById('submit-getConfusableString').addEventListener('click', 
         function() {
             try {
-              output1.innerHTML = confusables.utility.getConfusableString(inputString.value);
+              output1.innerHTML = confusables.getConfusableString(inputString.value);
             }
             catch(e) {
               output2.innerHTML = "[ERROR] : " + e.message;
@@ -36,7 +37,7 @@ document.addEventListener('DOMContentLoaded', function () {
             var input = parseInt(inputChar.value);
             if (isNaN(input)) { input = inputChar.value }
             try {
-                output2.innerHTML = confusables.utility.getConfusableCharacters(input);
+                output2.innerHTML = confusables.getConfusableCharacters(input);
             }
             catch(e) {
               output2.innerHTML = "[ERROR] : " + e.message;
