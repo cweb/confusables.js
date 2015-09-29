@@ -10,10 +10,10 @@
     "type": "git",
     "url": "git+https://github.com/cweb/confusables.js.git"
   },
-  "files" : [
+  "files": [
     "js/confusables.js"
-  ],   
-  "keywords" : [
+  ],
+  "keywords": [
     "Unicode",
     "confusables"
   ],
@@ -29,7 +29,8 @@
     "gulp-jasmine-phantom": "^2.0.1",
     "gulp-jshint": "^1.11.2",
     "gulp-sass": "^2.0.4",
-    "gulp-util": "^3.0.6"
+    "gulp-util": "^3.0.6",
+    "jasmine-core": "^2.3.4"
   },
   "dependencies": {
     "string.fromcodepoint": "^0.2.1"
