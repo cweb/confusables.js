@@ -20,39 +20,52 @@ Note that generating a full list of all confusable permutations is expensive and
 ## Installation
 The test page `index.html` is running at [http://lookout.net/test/confusablesjs](http://lookout.net/test/confusablesjs)
 
+Via [npm](https://www.npmjs.com/):
+
+```
+npm install confusables.js
+```
+
 In a browser:
 
 ```html
-<script src="js/confusables.data.js"></script>
 <script src="js/confusables.js"></script>
 <script src="js/fromcodepoint.js"></script>
 ```
 
+In [Node.js](https://nodejs.org/):
+
+```
+var confusables = require("confusables.js");
+```
+
+
+
 ## API
 Public methods are available to return confusable data.
 
-### `confusables.utility.getConfusableString()`
-The `confusables.utility.getConfusableString()` method accepts a string of one or more characters as input and returns a string of confusable characters.  Since each character of input can have several confusables, a random one is selected from the data set.  This provides a quick and convenient way to select confusables without enumerating the entire set.
+### `confusables.getConfusableString()`
+The `confusables.getConfusableString()` method accepts a string of one or more characters as input and returns a string of confusable characters.  Since each character of input can have several confusables, a random one is selected from the data set.  This provides a quick and convenient way to select confusables without enumerating the entire set.
 
 ```js
 var input = "abcDEF123";
-var output = confusables.utility.getConfusableString(input); 
+var output = confusables.getConfusableString(input); 
 // output is "αƄсᎠᎬϜוƧЗ""
 ```
 
-### `confusables.utility.getConfusableCharacters()`
-The `confusables.utility.getConfusableCharacters()` method accepts a single character or code point value (decimal or hex) as input and returns all of it's confusable characters in an array, which could be multidimensional when several characters combine to create a single confusable:
+### `confusables.getConfusableCharacters()`
+The `confusables.getConfusableCharacters()` method accepts a single character or code point value (decimal or hex) as input and returns all of it's confusable characters in an array, which could be multidimensional when several characters combine to create a single confusable:
 
 ```js
 var codePoint = 0x0041;  // or "A" or 65
-var output = confusables.utility.getConfusableCharacters(codePoint); 
+var output = confusables.getConfusableCharacters(codePoint); 
 // output is ['A', 'Ａ', 'Α', 'А', 'Ꭺ', 'ᗅ']
 // and could contain arrays of characters as values, e.g.:
 // [["C", "'"], "Ƈ" ];
 ```
 
 ## Author
-[Chris Weber](http://lookout.net/)
+[Chris Weber](http://www.lookout.net/)
 
 ## License
 
