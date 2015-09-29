@@ -1,6 +1,6 @@
 {
   "name": "confusables.js",
-  "version": "0.4.0",
+  "version": "0.4.1",
   "description": "A javascript module for accessing the Unicode confusables data.",
   "main": "js/confusables.js",
   "scripts": {
@@ -15,7 +15,8 @@
   ],
   "keywords": [
     "Unicode",
-    "confusables"
+    "confusables",
+    "security"
   ],
   "author": "Chris Weber",
   "license": "MIT",
