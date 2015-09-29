@@ -11,8 +11,7 @@
     "url": "git+https://github.com/cweb/confusables.js.git"
   },
   "files" : [
-    "js/confusables.js",
-    "js/confusables.data.js"
+    "js/confusables.js"
   ],   
   "keywords" : [
     "Unicode",
